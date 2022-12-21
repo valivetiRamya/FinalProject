@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Restaurant</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+
+
+</style>
+
+</head>
+
+<body>
+ <style>
+body {
+  background: url('data:image/jpeg;base64,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') no-repeat center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+</style>
+
+
+<div class="topnav">
+  <a class="active" href="#home">Home</a>
+  <a th:href="@{/menu}">Menu</a>
+  <a th:href="@{/login}">login</a>
+  <a th:href="@{/Contact}">Contact</a>
+ <a th:href="@{/signout}">Signout</a>
+</div>
+<div class="container">
+		<div class="row">
+			<h1>List of Restaurants</h1>
+		</div>
+		<div>
+			<div class="col-lg-3">
+				<a th:href="@{/createNewRestaurant}" class = "btn btn-primary btn-smmb-3">Add new
+					restaurant</a>
+			</div>
+		</div>
+		
+		<table class="table table-striped table-bordered">
+			<thead class="table-dark">
+				<tr>
+					<th> RestaurantName</th>
+					<th>Rating</th>
+					<th>AverageCost</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+
+				<tr th:each="restaurant : ${restaurantsList} ">
+					<td th:text="${restaurant.restaurantName}"></td>
+					<td th:text="${restaurant.rating}"></td>
+					<td th:text="${restaurant.averageCost}"></td>
+					
+					<td> 
+						<a th:href = "@{/delete/{id}(id = ${restaurant.restaurantId})}"
+						onclick="confirm('Are you sure to delete?')"
+						 class="btn btn-danger"> Delete</a>
+						 
+						 <a th:href = "@{/update/{id}(id = ${restaurant.restaurantId})}"
+						 onclick="confirm('Are you sure to update?')"
+						  class="btn btn-primary"> update</a>
+					</td>
+				</tr>
+			</tbody>
+			
+</table>
+	</div>
+</body>
+</html>
